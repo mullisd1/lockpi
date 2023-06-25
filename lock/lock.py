@@ -7,6 +7,18 @@ import json
 import logging
 # from tqdm import tqdm
 
+import sys
+import traceback
+
+class TracePrints(object):
+  def __init__(self):    
+    self.stdout = sys.stdout
+  def write(self, s):
+    self.stdout.write("Writing %r\n" % s)
+    traceback.print_stack(file=self.stdout)
+
+sys.stdout = TracePrints()
+
 def init():
     # Config logger
     logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
