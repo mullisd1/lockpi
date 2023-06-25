@@ -82,5 +82,5 @@ def main():
                     toggled = toggle_lock(card_reader)
 
 if __name__ == '__main__':
-#   fire.Fire(main)
     main()
+#   fire.Fire(main)
