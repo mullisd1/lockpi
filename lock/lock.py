@@ -2,10 +2,10 @@ import RPi.GPIO as GPIO
 import MFRC522
 import signal
 
-import fire
+# import fire
 import json
 import logging
-from tqdm import tqdm
+# from tqdm import tqdm
 
 def init():
     # Config logger
@@ -33,7 +33,7 @@ def validate_tag(card_reader):
         # Select the scanned tag
         card_reader.MFRC522_SelectTag(uid)
 
-        for user, user_data in tqdm(users.items()):
+        for user, user_data in users.items():
             # Load Keys
             keys = user_data.keys()
 
@@ -82,4 +82,5 @@ def main():
                     toggled = toggle_lock(card_reader)
 
 if __name__ == '__main__':
-  fire.Fire(main)
+#   fire.Fire(main)
+    main()
