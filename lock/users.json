@@ -1,0 +1,9 @@
+{
+    "admin": {
+        "keys": [],
+        "last_scanned" : [],
+        "times_used" : 0,
+        "number_of_uses" : "",
+        "uses_left" : ""
+    }
+}
