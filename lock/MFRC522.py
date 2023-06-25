@@ -309,7 +309,7 @@ class MFRC522:
     (status, backData, backLen) = self.MFRC522_ToCard(self.PCD_TRANSCEIVE, buf)
     
     if (status == self.MI_OK) and (backLen == 0x18):
-      # logging.debug( "Size: " + str(backData[0]))
+      logging.debug( "Size: " + str(backData[0]))
       return    backData[0]
     else:
       return 0
@@ -359,10 +359,10 @@ class MFRC522:
     recvData.append(pOut[1])
     (status, backData, backLen) = self.MFRC522_ToCard(self.PCD_TRANSCEIVE, recvData)
     if not(status == self.MI_OK):
-      # logging.debug( "Error while reading!")
+      logging.debug( "Error while reading!")
     i = 0
     if len(backData) == 16:
-      # logging.debug( "Sector "+str(blockAddr)+" "+str(backData))
+      logging.debug( "Sector "+str(blockAddr)+" "+str(backData))
   
   def MFRC522_Write(self, blockAddr, writeData):
     buff = []
@@ -375,7 +375,7 @@ class MFRC522:
     if not(status == self.MI_OK) or not(backLen == 4) or not((backData[0] & 0x0F) == 0x0A):
         status = self.MI_ERR
     
-    # logging.debug( "%s backdata &0x0F == 0x0A %s" % (backLen, backData[0]&0x0F))
+    logging.debug( "%s backdata &0x0F == 0x0A %s" % (backLen, backData[0]&0x0F))
     if status == self.MI_OK:
         i = 0
         buf = []
@@ -387,9 +387,9 @@ class MFRC522:
         buf.append(crc[1])
         (status, backData, backLen) = self.MFRC522_ToCard(self.PCD_TRANSCEIVE,buf)
         if not(status == self.MI_OK) or not(backLen == 4) or not((backData[0] & 0x0F) == 0x0A):
-            # logging.debug( "Error while writing")
+            logging.debug( "Error while writing")
         if status == self.MI_OK:
-            # logging.debug( "Data written")
+            logging.debug( "Data written")
 
   def MFRC522_DumpClassic1K(self, key, uid):
     i = 0
@@ -399,7 +399,7 @@ class MFRC522:
         if status == self.MI_OK:
             self.MFRC522_Read(i)
         else:
-            # logging.debug( "Authentication error")
+            logging.debug( "Authentication error")
         i = i+1
 
   def MFRC522_Init(self):
