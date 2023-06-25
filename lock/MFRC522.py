@@ -340,7 +340,7 @@ class MFRC522:
 
     # Check if an error occurred
     if not(status == self.MI_OK):
-      logging.debug("AUTH ERROR!!"))
+      logging.debug("AUTH ERROR!!")
     if not (self.Read_MFRC522(self.Status2Reg) & 0x08) != 0:
       logging.debug("AUTH ERROR(status2reg & 0x08) != 0")
 
